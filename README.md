@@ -9,16 +9,22 @@ This Bash script allows users to search and access movies or series for streamin
 - requests
 - pyfiglet
 - colorama
-  '''
+  ```
   pip install -r requirements.txt
-  '''
+  ```
 
 ## Usage
-1. Clone this repository.a
+1. Clone this repository
+```
+git clone https://github.com/ITheWatcher/Movie-Scrapper.git
+```
 2. Navigate to the directory containing the `main.py` file.
-3. Run `python main.py`.
-4. Follow the prompts to select between movies and series and input your desired title.
-5. The script will provide a list of available titles and their links for viewing or downloading.
+```
+cd Movie-Scrapper
+```
+4. Run `python main.py`.
+5. Follow the prompts to select between movies and series and input your desired title.
+6. The script will provide a list of available titles and their links for viewing or downloading.
 
 ## Notes
 - Ensure all dependencies are installed before running the script.
