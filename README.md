@@ -31,8 +31,3 @@ python main.py
 
 ## Notes
 - Ensure all dependencies are installed before running the script.
-- The script may need modifications to work with different websites or to handle errors.
-- Use responsibly and make sure to comply with the terms of service of the website being scraped.
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
