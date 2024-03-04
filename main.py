@@ -10,9 +10,8 @@ init()
 fig_large = Figlet(font='big')
 fig_small = Figlet(font='small')
 ascii_art_large = fig_large.renderText('The Watcher')
-ascii_art_small = fig_small.renderText('Tele: @hh8cc')
 colored_ascii_large = Fore.GREEN + ascii_art_large + Fore.RESET
-print(colored_ascii_large + ascii_art_small)
+print(colored_ascii_large)
 
 
 
@@ -20,12 +19,14 @@ def main():
     while True:
         # os.system("cls")
         options = int(input(("What do you prefer to watch? [ 1 | 2 ]\n\n[1] Movie\n[2] Series\n")))
-
-        if 2 >= options >= 1:
-            break
-        else:
-            # os.system("clear")
-            print("[!] Choose 1 or 2 only ")
+        try:
+            if 2 >= options >= 1:
+                break
+            else:
+                # os.system("clear")
+                print(Fore.RED + "[!] Choose 1 or 2 only " + Fore.RESET)
+        except ValueError:
+            return f"{Fore.RED}Choose between 1 or 2 only{Fore.RESET}"
 
     if options == 1:
         def start():
@@ -57,24 +58,29 @@ def main():
                 for links in all_qual:
                     qualitys = links.find("resolution").text
                     print(f"{qualitys} Download link: {links["href"]} ")
+        while True:
+            try:
+                UserInput = int(input("What do you prefer to watch: "))
+                if UserInput in movie_info:
+                    UserChoise = movie_info[UserInput]
+                    print(UserChoise['Title'])
+                    print(f"Watch link: {UserChoise['Link']}")
+                    choice_site = requests.get(UserChoise['Link'])
+                    choice_soup = BeautifulSoup(choice_site.content, "lxml")
+                    down_list = choice_soup.find_all("ul", {"class": "List--Download--Wecima--Single"})
+                    download_m(down_list)
+                    time.sleep(1)
+                    webbrowser.open(UserChoise["Link"])
+                    break
+                else:
+                    raise ValueError
 
-        UserInput = int(input("What do you prefer to watch: "))
-        # os.system("cls")
+            except ValueError as e:
+                os.system("cls")
+                print(f"{Fore.RED}Oops Please Choose right movie{Fore.RESET}")
+                get_movie_titles(movie_div)
 
-        if UserInput in movie_info:
-            UserChoise = movie_info[UserInput]
-            print(UserChoise['Title'])
-            print(f"Watch link: {UserChoise['Link']}")
-            choice_site = requests.get(UserChoise['Link'])
-            choice_soup = BeautifulSoup(choice_site.content, "lxml")
-            down_list = choice_soup.find_all("ul", {"class": "List--Download--Wecima--Single"})
-            download_m(down_list)
-            time.sleep(1)
-            webbrowser.open(UserChoise["Link"])
-            
-        else:
-            print(f"Invalid choise please select right movie")
-    
+
     elif options == 2:
         print(f"{Fore.RED}Soon...{Fore.RESET}")
         main()
@@ -87,7 +93,7 @@ def main():
                 
                 
         else:
-            exitapp = input("Press any key to exit app...")
+            input("Press any key to exit app...")
             break
         break
 
