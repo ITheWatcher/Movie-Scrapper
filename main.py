@@ -24,9 +24,9 @@ def main():
                 break
             else:
                 # os.system("clear")
-                print(Fore.RED + "[!] Choose 1 or 2 only " + Fore.RESET)
+                print(f"{Fore.RED}[!] Choose 1 or 2 only {Fore.RESET}")
         except ValueError:
-            return f"{Fore.RED}Choose between 1 or 2 only{Fore.RESET}"
+            return f"{Fore.RED}[!] Choose 1 or 2 only {Fore.RESET}"
 
     if options == 1:
         def start():
@@ -36,7 +36,6 @@ def main():
             movie_div = soup.find_all("div", {"class": "Grid--WecimaPosts"})
             return movie_div
         movie_div = start()
-
         movie_info = {}
 
         def get_movie_titles(movie_div):
@@ -85,6 +84,7 @@ def main():
         print(f"{Fore.RED}Soon...{Fore.RESET}")
         main()
             
+
     while True:
         mistake = input("Did you choose wrong movie or want another movie? Y/N ").upper()
 
