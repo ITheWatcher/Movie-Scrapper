@@ -1,7 +1,7 @@
 # Movie Scraper
 
 ## Introduction
-This Bash script allows users to search and access movies or series for streaming or downloading. It utilizes web scraping techniques with BeautifulSoup to gather information from a specific website.
+This Python script allows users to search and access movies or series for streaming or downloading. It utilizes web scraping techniques with BeautifulSoup to gather information from a specific website.
 
 ## Requirements
 - Python 3.x
